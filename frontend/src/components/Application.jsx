@@ -3,10 +3,10 @@ import React, { useState } from "react";
 const Application = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [reason, setReason] = useState("");
+  const [fundAmount, setFundAmount] = useState("");
+  const [location, setLocation] = useState("");
   const [phone, setPhone] = useState("");
-  const [contactMethod, setContactMethod] = useState("email");
-  const [urgency, setUrgency] = useState("normal");
   const [isLoading, setIsLoading] = useState(false);
   const [formStatus, setFormStatus] = useState("");
 
@@ -27,21 +27,16 @@ const Application = () => {
     <section id="application" className="bg-gray-50 py-16 px-6">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5">
         {/* Description Section */}
-        <div className="lg:w-5/12 text-center lg:text-left ">
+        <div className="lg:w-5/12 text-center lg:text-left">
           <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
-            Read me !
+            Read Me!
           </h2>
           <p className="text-lg text-gray-700 mb-8">
             If you or someone you know is in need of assistance, please fill out
             the application form below. Our team will review your request and
-            get back to you as soon as possible. We are here to help during
-            difficult times, whether for emergency relief, financial support, or
-            other necessary services. Your details will remain confidential and
-            used solely for the purpose of providing assistance.
-          </p>
-          <p className="text-lg text-gray-700 mb-8">
-            We will carefully review your KYC documents and reach out to you
-            shortly for further steps.
+            get back to you as soon as possible. Your details will remain
+            confidential and used solely for the purpose of providing
+            assistance.
           </p>
         </div>
 
@@ -56,7 +51,7 @@ const Application = () => {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Full Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
@@ -64,49 +59,44 @@ const Application = () => {
             />
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               required
             />
+            <textarea
+              placeholder="Reason for Assistance"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+              required
+            ></textarea>
+            <input
+              type="number"
+              placeholder="Fund Amount"
+              value={fundAmount}
+              onChange={(e) => setFundAmount(e.target.value)}
+              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+              required
+            />
             <input
               type="tel"
-              placeholder="Your Phone Number"
+              placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               pattern="[0-9]{10}"
               required
             />
-            <select
-              value={contactMethod}
-              onChange={(e) => setContactMethod(e.target.value)}
-              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
-            >
-              <option value="email">Email</option>
-              <option value="phone">Phone</option>
-            </select>
-            <textarea
-              placeholder="Describe Your Situation"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
-              required
-            ></textarea>
-            <label htmlFor="urgency" className="text-left block mb-2">
-              Urgency Level
-            </label>
-            <select
-              id="urgency"
-              value={urgency}
-              onChange={(e) => setUrgency(e.target.value)}
-              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
-            >
-              <option value="normal">Normal</option>
-              <option value="urgent">Urgent</option>
-              <option value="critical">Critical</option>
-            </select>
             <button
               type="submit"
               className="w-full py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300"
