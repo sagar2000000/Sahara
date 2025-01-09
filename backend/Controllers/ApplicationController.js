@@ -23,7 +23,7 @@ const ApplicationController = async (req, res) => {
        
 
         
-        const application = new Application({fullname, phonenumber, email, location,reason,fundamount,kycimage:image_filename });
+        const application = new Application({fullname, phonenumber, email, location,reason,fundamount });
         await application.save();
         return res.status(200).json({ success: true, message: 'Application for donation submitted successfully'});
         

@@ -1,26 +1,50 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Application = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [reason, setReason] = useState("");
-  const [fundAmount, setFundAmount] = useState("");
-  const [location, setLocation] = useState("");
-  const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [formStatus, setFormStatus] = useState("");
+  const url = "http://localhost:4000/app/application/submission"
+  const [applicationData, setApplicationData] = useState({
+    fullname: "",
+    email: "",
+    phonenumber: "",
+    fundamount: "",
+    reason: "",
+    location: "",
+  });
 
-  const handleSubmit = (e) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setApplicationData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setFormStatus(""); // Reset status before submitting
 
-    // Simulate a form submission
-    setTimeout(() => {
+    try {
+      const response = await axios.post(url, applicationData);
+      console.log(response)
       setIsLoading(false);
       setFormStatus("Application submitted successfully!");
-      // Optionally, you could reset the form fields here after successful submission
-    }, 2000);
+      // Reset the form fields after successful submission
+      setApplicationData({
+        fullname: "",
+        email: "",
+        phonenumber: "",
+        fundamount: "",
+        reason: "",
+        location: "",
+      });
+    } catch (error) {
+      setIsLoading(false);
+      setFormStatus("Failed to submit the application. Please try again.");
+    }
   };
 
   return (
@@ -46,53 +70,61 @@ const Application = () => {
             Apply for Assistance
           </h2>
           {formStatus && (
-            <p className="text-green-500 font-semibold mb-4">{formStatus}</p>
+            <p className={`mb-4 ${formStatus.includes("success") ? "text-green-500" : "text-red-500"} font-semibold`}>
+              {formStatus}
+            </p>
           )}
           <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="fullname"
+              value={applicationData.fullname}
+              onChange={handleInputChange}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               required
             />
             <input
               type="email"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              value={applicationData.email}
+              onChange={handleInputChange}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               required
             />
             <textarea
               placeholder="Reason for Assistance"
-              value={reason}
-              onChange={(e) => setReason(e.target.value)}
+              name="reason"
+              value={applicationData.reason}
+              onChange={handleInputChange}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               required
             ></textarea>
             <input
               type="number"
               placeholder="Fund Amount"
-              value={fundAmount}
-              onChange={(e) => setFundAmount(e.target.value)}
+              name="fundamount"
+              value={applicationData.fundamount}
+              onChange={handleInputChange}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               required
             />
             <input
               type="text"
               placeholder="Location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              name="location"
+              value={applicationData.location}
+              onChange={handleInputChange}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               required
             />
             <input
               type="tel"
               placeholder="Phone Number"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              name="phonenumber"
+              value={applicationData.phonenumber}
+              onChange={handleInputChange}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               pattern="[0-9]{10}"
               required
