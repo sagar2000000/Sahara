@@ -1,32 +1,29 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const FoodAndCloth = () => {
-  // Sample data for donation details, in a real scenario, this would come from an API.
-  const [donations, setDonations] = useState([
-    {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      phone: "9876543210",
-      location: "Kathmandu",
-      description: "10kg Rice, 5 Jackets",
-      status: "Pending",
-    },
-    {
-      name: "Jane Smith",
-      email: "janesmith@example.com",
-      phone: "9876543211",
-      location: "Pokhara",
-      description: "20kg Rice, 10 Blankets",
-      status: "Confirmed",
-    },
-  ]);
+  const url = "http://localhost:4000/app/fc-collection/fetch";
+  const [donations, setDonations] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Example function to update donation status, simulating an admin action.
-  const handleStatusChange = (index, newStatus) => {
-    const updatedDonations = [...donations];
-    updatedDonations[index].status = newStatus;
-    setDonations(updatedDonations);
-  };
+  // Fetch donations from API
+  useEffect(() => {
+    const fetchDonations = async () => {
+      try {
+        const response = await axios.get(url);
+        setDonations(response.data.data); // Set the fetched data
+      } catch (err) {
+        setError("Failed to fetch donations. Please try again later.");
+        console.error(err);
+      }
+    };
+
+    fetchDonations();
+  }, []);
+
+  if (error) {
+    return <p className="text-center text-red-500">{error}</p>;
+  }
 
   return (
     <div className="container mx-auto px-5 py-10">
@@ -43,31 +40,26 @@ const FoodAndCloth = () => {
               <th className="px-4 py-2 text-left">Phone</th>
               <th className="px-4 py-2 text-left">Location</th>
               <th className="px-4 py-2 text-left">Description</th>
-              <th className="px-4 py-2 text-left">Status</th>
-              <th className="px-4 py-2 text-left">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {donations.map((donation, index) => (
-              <tr key={index} className="border-b hover:bg-gray-50">
-                <td className="px-4 py-2">{donation.name}</td>
-                <td className="px-4 py-2">{donation.email}</td>
-                <td className="px-4 py-2">{donation.phone}</td>
-                <td className="px-4 py-2">{donation.location}</td>
-                <td className="px-4 py-2">{donation.description}</td>
-                <td className="px-4 py-2">{donation.status}</td>
-                <td className="px-4 py-2">
-                  <button
-                    onClick={() =>
-                      handleStatusChange(index, donation.status === "Pending" ? "Confirmed" : "Pending")
-                    }
-                    className="bg-[#b17457] text-white py-1 px-3 rounded-md hover:bg-[#9c644a] transition duration-300"
-                  >
-                    {donation.status === "Pending" ? "Confirm" : "Revert"}
-                  </button>
+            {donations.length > 0 ? (
+              donations.map((donation, index) => (
+                <tr key={index} className="border-b hover:bg-gray-50">
+                  <td className="px-4 py-2">{donation.fullname}</td>
+                  <td className="px-4 py-2">{donation.email}</td>
+                  <td className="px-4 py-2">{donation.phonenumber}</td>
+                  <td className="px-4 py-2">{donation.location}</td>
+                  <td className="px-4 py-2">{donation.description}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5" className="px-4 py-2 text-center text-gray-500">
+                  No donations available.
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

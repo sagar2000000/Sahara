@@ -33,6 +33,24 @@ const ApplicationController = async (req, res) => {
         return res.status(500).json({ success: false, message: 'Internal server error' });
     }
 };
+const fetchApplication = async(req,res)=>{
+
+
+try {
+  const fetchedApplication = await Application.find({});
+ 
+  console.log(fetchedApplication)
+  res.json({success:true,data:fetchedApplication})
+
+} catch (error) {
+console.log(error)
+res.json({success:false,message:"Error"})
+
+
+}
+
+
+}
 
 
 
@@ -43,4 +61,4 @@ const ApplicationController = async (req, res) => {
 
 
 
-export { ApplicationController };
+export { ApplicationController ,fetchApplication};

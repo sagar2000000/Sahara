@@ -1,7 +1,7 @@
 import express from "express"
 
 
-import { ApplicationController } from "../Controllers/ApplicationController.js"
+import { ApplicationController, fetchApplication } from "../Controllers/ApplicationController.js"
 
 
 const ApplicationRouter =express.Router()
@@ -9,6 +9,7 @@ const ApplicationRouter =express.Router()
 
 
 ApplicationRouter.post('/submission',ApplicationController)
+ApplicationRouter.get('/fetch',fetchApplication)
 
 
 
