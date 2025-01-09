@@ -5,11 +5,7 @@ const ApplicationController = async (req, res) => {
     try {
 
 
-        console.log(req.file.filename)
-
-      let image_filename = `${req.file.filename}`
-      
-      console.log(image_filename)
+        
        
         const { fullname, phonenumber, email, location,reason,fundamount } = req.body;
 
