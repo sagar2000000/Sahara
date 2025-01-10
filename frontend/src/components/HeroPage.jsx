@@ -59,7 +59,7 @@ const HeroPage = () => {
                   Your donation provides vital support for education,
                   healthcare, disaster relief, and community development.
                 </p>
-                <Link to={"donation"} className="items-start">
+                <Link to={"/donation"} className="items-start">
                   <button className="mt-4 px-6 py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300 shadow-md hover:shadow-lg items-start">
                     Donate Now
                   </button>
@@ -82,7 +82,7 @@ const HeroPage = () => {
                   Our relief fund is here to help you access critical aid during
                   times of hardship, ensuring that no one faces recovery alone.
                 </p>
-                <Link to={"donation"} className="items-start">
+                <Link to={"/application"} className="items-start">
                   <button className="mt-4 px-6 py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300 shadow-md hover:shadow-lg items-start">
                     Apply Now
                   </button>

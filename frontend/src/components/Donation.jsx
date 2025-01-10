@@ -23,7 +23,7 @@ const Donation = () => {
               description: "Help provide financial assistance to those in need.",
               img: assets.fund,
               link: "/donation/fund",
-              buttonText: "Donate to Fund",
+              buttonText: "Donate Fund",
             },
             {
               title: "Blood Donation",
