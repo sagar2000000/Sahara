@@ -7,12 +7,12 @@ const HeroPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-[#d8d2c2] h-screen flex items-center justify-center text-center relative">
+      <section className=" h-screen flex items-center justify-center text-center relative">
         {/* Transparent Image */}
         <img
-          src="/path-to-your-transparent-image.png" // Replace with your image path
+          src={assets.hero_img} // Replace with your image path
           alt="Hero Background"
-          className="absolute top-2 left-0 w-full h-full object-cover opacity-20 pointer-events-none"
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-60 pointer-events-none"
         />
 
         <div className="container mx-auto px-6 lg:px-12 py-16 relative z-10">
@@ -40,7 +40,7 @@ const HeroPage = () => {
         </div>
       </section>
 
-      <section className="bg-white py-16 px-4">
+      <section className="bg-gray-50 py-16 px-4">
         <div className="container mx-auto text-center">
           <div className="mt-8 flex flex-col sm:flex-row sm:space-x-8 space-y-8 sm:space-y-0">
             {/* Donation Image 1 */}

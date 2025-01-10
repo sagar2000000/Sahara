@@ -2,7 +2,7 @@ import React from "react";
 
 const OurGoals = () => {
   return (
-    <section className="bg-gray-50 py-16 px-4" id="goals">
+    <section className="bg-gray-100 py-16 px-4 pb-28" id="goals">
       <div className="container mx-auto">
         {/* Heading Section */}
         <div className="text-center">
