@@ -4,6 +4,7 @@ const helpBotController = async (req, res) => {
   const { question } = req.body;
   console.log(question);
   const prompt = `
+  your name is Eva.
   I have built a fundraising platform named "Sahara" with the motto "By the People, For the People."  
   Our mission is to "Empower Lives Through Generosity" and to show that "In Times of Crisis, We Stand Together."  
 
