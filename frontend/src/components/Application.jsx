@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Application = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [formStatus, setFormStatus] = useState("");
-  const url = "http://localhost:4000/app/application/submission"
+  const url = "http://localhost:4000/app/application/submission";
   const [applicationData, setApplicationData] = useState({
     fullname: "",
     email: "",
@@ -25,13 +26,14 @@ const Application = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setFormStatus(""); // Reset status before submitting
 
     try {
       const response = await axios.post(url, applicationData);
-      console.log(response)
+      console.log(response);
+      toast.success("Application submitted successfully!", {
+        position: "top-right",
+      });
       setIsLoading(false);
-      setFormStatus("Application submitted successfully!");
       // Reset the form fields after successful submission
       setApplicationData({
         fullname: "",
@@ -42,13 +44,16 @@ const Application = () => {
         location: "",
       });
     } catch (error) {
+      toast.error("Failed to submit the application. Please try again.", {
+        position: "top-right",
+      });
       setIsLoading(false);
-      setFormStatus("Failed to submit the application. Please try again.");
     }
   };
 
   return (
     <section id="application" className="bg-gray-50 py-16 px-6">
+      <ToastContainer />
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5">
         {/* Description Section */}
         <div className="lg:w-5/12 text-center lg:text-left">
@@ -69,11 +74,6 @@ const Application = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
             Apply for Assistance
           </h2>
-          {formStatus && (
-            <p className={`mb-4 ${formStatus.includes("success") ? "text-green-500" : "text-red-500"} font-semibold`}>
-              {formStatus}
-            </p>
-          )}
           <form onSubmit={handleSubmit}>
             <input
               type="text"

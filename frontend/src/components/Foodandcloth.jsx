@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FoodAndCloth = () => {
   const [fcDonationData, setFcDonationData] = useState({
@@ -11,7 +13,6 @@ const FoodAndCloth = () => {
   });
   const url = "http://localhost:4000/app/fc-collection/donate";
   const [isLoading, setIsLoading] = useState(false);
-  const [formStatus, setFormStatus] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,18 +21,22 @@ const FoodAndCloth = () => {
       [name]: value,
     }));
   };
-  console.log(fcDonationData)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setFormStatus(""); // Reset status before submitting
 
     try {
       const response = await axios.post(url, fcDonationData);
       console.log("Server Response:", response.data);
 
-      setFormStatus("Thank you for your generous donation!");
+      // Show success notification
+      toast.success("Thank you for your generous donation!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+
+      // Reset form data
       setFcDonationData({
         fullname: "",
         email: "",
@@ -41,7 +46,12 @@ const FoodAndCloth = () => {
       });
     } catch (error) {
       console.error("Error submitting donation:", error);
-      setFormStatus("Something went wrong. Please try again.");
+
+      // Show error notification
+      toast.error("Something went wrong. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } finally {
       setIsLoading(false);
     }
@@ -49,6 +59,9 @@ const FoodAndCloth = () => {
 
   return (
     <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5">
+      {/* Toastify Container */}
+      <ToastContainer />
+
       {/* Description Section */}
       <div className="container w-1/2 mx-auto px-6 py-10">
         <h1 className="text-4xl font-bold text-[#b17457] mb-6 text-center">
@@ -80,17 +93,6 @@ const FoodAndCloth = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
           Food and Cloth Collection
         </h2>
-        {formStatus && (
-          <p
-            className={`${
-              formStatus.includes("Thank you")
-                ? "text-green-500"
-                : "text-red-500"
-            } font-semibold mb-4`}
-          >
-            {formStatus}
-          </p>
-        )}
         <form onSubmit={handleSubmit}>
           <input
             type="text"

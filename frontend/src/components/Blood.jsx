@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Blood = () => {
   const [bloodCollectionData, setBloodCollectionData] = useState({
@@ -14,7 +16,6 @@ const Blood = () => {
 
   const url = "http://localhost:4000/app/blood/donate";
   const [isLoading, setIsLoading] = useState(false);
-  const [formStatus, setFormStatus] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,13 +28,19 @@ const Blood = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setFormStatus("");
 
     try {
       const response = await axios.post(url, bloodCollectionData);
       console.log("Server Response:", response.data);
 
-      setFormStatus("Application submitted successfully!");
+      toast.success("Application submitted successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+
       // Reset form fields after submission
       setBloodCollectionData({
         fullname: "",
@@ -46,8 +53,16 @@ const Blood = () => {
       });
     } catch (error) {
       console.error("Error submitting form:", error);
-      setFormStatus(
-        error.response?.data?.message || "Something went wrong. Please try again."
+      toast.error(
+        error.response?.data?.message ||
+          "Something went wrong. Please try again.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+        }
       );
     } finally {
       setIsLoading(false);
@@ -56,14 +71,15 @@ const Blood = () => {
 
   return (
     <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5 my-10">
+      <ToastContainer />
       {/* Description Section */}
       <div className="container w-1/2 mx-auto px-6 py-10">
         <h1 className="text-4xl font-bold text-red-600 mb-6 text-center">
           Blood Donation Campaigns
         </h1>
         <p className="text-gray-700 text-lg text-center mb-8">
-          Your blood donation can save lives. Join our efforts to help those
-          in need of blood transfusions.
+          Your blood donation can save lives. Join our efforts to help those in
+          need of blood transfusions.
         </p>
 
         <div className="bg-white shadow-md rounded-lg p-6 mb-8 hover:shadow-lg transition-shadow duration-300">
@@ -71,9 +87,8 @@ const Blood = () => {
             Why Donate Blood?
           </h2>
           <p className="text-gray-600 mb-4">
-            Blood is essential for surgeries, cancer treatment, chronic
-            illnesses, and traumatic injuries. Every donation can save up to
-            three lives.
+            Blood is essential for illnesses, and traumatic injuries. Every
+            donation can save up to three lives.
           </p>
           <button className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700">
             Learn More
@@ -86,17 +101,6 @@ const Blood = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-red-600 mb-6">
           Blood Collection
         </h2>
-        {formStatus && (
-          <p
-            className={`${
-              formStatus.includes("successfully")
-                ? "text-green-500"
-                : "text-red-500"
-            } font-semibold mb-4`}
-          >
-            {formStatus}
-          </p>
-        )}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
