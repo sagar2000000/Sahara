@@ -81,16 +81,37 @@ const Help = () => {
             <img
               src={assets.eva_logo} // Replace with actual bot avatar URL
               alt="AI Bot Avatar"
-              className="w-32 h-32 rounded-full mx-auto mb-6"
+              className="w-32 h-32 rounded-full mx-auto mb-6 animate-bouncy-shake-once"
             />
+
             <h3 className="text-4xl text-center font-semibold text-[#007BFF]">
-            I'm your AI assistant,{" "}
-              <span className="text-5xl font-bold bg-gradient-to-r from-[#007BFF] to-[#000080] text-transparent bg-clip-text">
-                Eva
+              {"I'm your AI assistant,".split("").map((char, index) => (
+                <span
+                  key={index}
+                  className={`inline-block ${
+                    char === " " ? "w-2" : "animate-letter-fade"
+                  }`}
+                  style={{ animationDelay: `${index * 0.04}s` }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}{" "}
+              <span>
+                {"Eva".split("").map((char, index) => (
+                  <span
+                    key={index}
+                    className={`inline-block text-5xl font-bold bg-gradient-to-r from-[#007BFF] to-[#000080] text-transparent bg-clip-text animate-letter-fade`}
+                    style={{ animationDelay: `${(index + 24) * 0.04}s` }}
+                  >
+                    {char}
+                  </span>
+                ))}
               </span>
             </h3>
+
             <p className="text-2xl mt-2 text-center">
-             here to guide you! Ask me anything, and I'll provide the support you need.
+              here to guide you! Ask me anything, and I'll provide the support
+              you need.
             </p>
           </div>
 

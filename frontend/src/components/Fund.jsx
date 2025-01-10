@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CryptoJS from "crypto-js";
+import { assets } from "../assets/assets";
 import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const Fund = () => {
@@ -27,13 +29,17 @@ const Fund = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Generate signature function
-  const generateSignature = (total_amount, transaction_uuid, product_code, secret) => {
+  const generateSignature = (
+    total_amount,
+    transaction_uuid,
+    product_code,
+    secret
+  ) => {
     const hashString = `total_amount=${total_amount},transaction_uuid=${transaction_uuid},product_code=${product_code}`;
     const hash = CryptoJS.HmacSHA256(hashString, secret);
     return CryptoJS.enc.Base64.stringify(hash);
   };
 
-  
   useEffect(() => {
     const { total_amount, transaction_uuid, product_code, secret } = formData;
     const hashedSignature = generateSignature(
@@ -64,7 +70,8 @@ const Fund = () => {
       esewaForm.style.display = "none";
 
       Object.entries(formData).forEach(([key, value]) => {
-        if (key !== "secret") { // Exclude secret from being sent to the frontend
+        if (key !== "secret") {
+          // Exclude secret from being sent to the frontend
           const input = document.createElement("input");
           input.type = "hidden";
           input.name = key;
@@ -82,18 +89,28 @@ const Fund = () => {
     <>
       <ToastContainer />
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5 my-10">
-        <div className="container w-1/2 mx-auto px-6 py-10">
-          <h1 className="text-4xl font-bold text-[#b17457] mb-6 text-center">
+        <div className="container w-2/3 mx-auto px-6 py-10">
+          <h1 className="text-5xl font-bold text-[#000080] mb-6 text-center">
             Fund Donations
           </h1>
-          <p className="text-gray-700 text-lg text-center mb-8">
+          <p className="text-gray-700 text-2xl text-center mb-8">
             Your financial support empowers us to assist those in need during
             challenging times. Together, we can rebuild lives and communities.
           </p>
+          <div className="bg-white shadow-md rounded-lg p-6 mb-8 hover:shadow-lg transition-shadow duration-300">
+            <div className="flex justify-between py-10 gap-3">
+              <div>
+                <img src={assets.fund_img1} alt="img1" className="w-[420px]" />
+              </div>
+              <div>
+                <img src={assets.fund_img2} alt="img2" className="w-[400px]" />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="lg:w-1/2 bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#000080] mb-6">
             Fund Collection
           </h2>
           <form onSubmit={handleSubmit}>
@@ -146,7 +163,7 @@ const Fund = () => {
             />
             <button
               type="submit"
-              className="w-full py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300"
+              className="w-full py-3 bg-[#007BFF] text-white rounded-lg hover:bg-[#0056b3] transition duration-300"
               disabled={isLoading}
             >
               {isLoading ? "Submitting..." : "Pay Now"}

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { assets } from "../assets/assets";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <nav className="bg-[#faf7f7] shadow-md fixed w-full z-50">
-      <div className="container mx-auto flex justify-between items-center py-6 px-28">
+      <div className="container mx-auto flex justify-between items-center py-6 px-20">
         {/* Logo */}
-        <div className="text-[#000080] font-bold text-5xl">
-          <Link to="/">Sahara</Link>
+        <div className="flex justify-between items-center gap-4">
+          <div className="text-[#000080] font-bold text-5xl">
+            <Link to="/">Sahara</Link>
+          </div>
+          <img src={assets.biology} alt="logo" className="w-10" />
         </div>
 
         {/* Desktop Menu */}

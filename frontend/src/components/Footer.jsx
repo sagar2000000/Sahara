@@ -9,9 +9,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Information */}
           <div>
-            <Link to={"/"}>
-              <h3 className="text-3xl font-bold mb-4 text-[#000080]">Sahara</h3>
-            </Link>
+            <div className="flex justify-start items-center gap-2 pb-3">
+              <div className="text-[#000080] font-bold text-3xl">
+                <Link to="/">Sahara</Link>
+              </div>
+              <img src={assets.biology} alt="logo" className="w-7" />
+            </div>
             <p className="text-gray-500 mb-4 text-xl">
               We are committed to providing assistance to those in need. Our
               platform connects donors and recipients to create a better future

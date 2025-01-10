@@ -16,9 +16,19 @@ import food_img1 from './food_img1.jpg'
 import food_img2 from './food_img2.jpg'
 import form from './form.png'
 import money_bag from './money-bag.png'
+import patient from './patient.png'
+import social_media from './social-media.png'
+import success from './success.png'
+import delivery from './delivery.png'
+import biology from './biology.png'
 
 
 export const assets = {
+    biology,
+    patient,
+    social_media,
+    success,
+    delivery,
     esewalogo,
     khaltilogo,
     donation,

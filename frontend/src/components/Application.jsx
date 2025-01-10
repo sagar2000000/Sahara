@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +15,53 @@ const Application = () => {
     reason: "",
     location: "",
   });
+
+  const [numbers, setNumbers] = useState([0, 0]);
+  const [isAnimated, setIsAnimated] = useState(false);
+  const counterRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isAnimated) {
+            setIsAnimated(true);
+            animateNumbers(0, [1000, 10000], 2000);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => {
+      if (counterRef.current) observer.unobserve(counterRef.current);
+    };
+  }, [isAnimated]);
+
+  const animateNumbers = (start, endValues, duration) => {
+    let startTime = null;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 0.4);
+
+      setNumbers(
+        endValues.map((endValue) =>
+          Math.floor(progress * (endValue - start) + start)
+        )
+      );
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +82,6 @@ const Application = () => {
         position: "top-right",
       });
       setIsLoading(false);
-      // Reset the form fields after successful submission
       setApplicationData({
         fullname: "",
         email: "",
@@ -68,14 +114,17 @@ const Application = () => {
             confidential and used solely for the purpose of providing
             assistance.
           </p>
-          <div className="flex justify-between items-center gap-8 py-10">
+          <div
+            className="flex justify-between items-center gap-8 py-10"
+            ref={counterRef}
+          >
             <div className="flex flex-col justify-center items-center w-full lg:w-5/12">
               <img
                 src={assets.form}
                 alt="Image 1"
                 className="w-20 h-auto rounded-lg p-2"
               />
-              <p className="text-5xl p-2 text-[#007BFF]">1000+</p>
+              <p className="text-5xl p-2 text-[#007BFF]">{numbers[0]}+</p>
               <p className="text-2xl p-2">Beneficiaries Impacted</p>
             </div>
             <div className="flex flex-col justify-center items-center w-full lg:w-5/12">
@@ -84,13 +133,11 @@ const Application = () => {
                 alt="Image 2"
                 className="w-20 h-auto rounded-lg p-2"
               />
-              <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+              <p className="text-5xl p-2 text-[#007BFF]">Rs {numbers[1]}+</p>
               <p className="text-2xl p-2">Aid Distributed</p>
             </div>
           </div>
         </div>
-
-        {/* Two Images Side by Side */}
 
         {/* Form Section */}
         <div className="lg:w-1/2 bg-white p-6 rounded-lg shadow-md">
