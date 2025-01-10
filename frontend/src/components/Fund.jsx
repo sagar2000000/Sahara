@@ -1,59 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import CryptoJS from "crypto-js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { assets } from "../assets/assets";
 
 const Fund = () => {
+  const [formData, setFormData] = useState({
+    amount: "10",
+    tax_amount: "0",
+    total_amount: "10",
+    transaction_uuid: uuidv4(),
+    product_service_charge: "0",
+    product_delivery_charge: "0",
+    product_code: "EPAYTEST",
+    success_url: "http://localhost:5173",
+    failure_url: "http://localhost:5173",
+    signed_field_names: "total_amount,transaction_uuid,product_code",
+    signature: "",
+    secret: "8gBm/:&EnhH.1/q", // Keep secret on the server-side in production
+  });
+
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
+
+  // Generate signature function
+  const generateSignature = (total_amount, transaction_uuid, product_code, secret) => {
+    const hashString = `total_amount=${total_amount},transaction_uuid=${transaction_uuid},product_code=${product_code}`;
+    const hash = CryptoJS.HmacSHA256(hashString, secret);
+    return CryptoJS.enc.Base64.stringify(hash);
+  };
+
+  
+  useEffect(() => {
+    const { total_amount, transaction_uuid, product_code, secret } = formData;
+    const hashedSignature = generateSignature(
+      total_amount,
+      transaction_uuid,
+      product_code,
+      secret
+    );
+    setFormData((prev) => ({ ...prev, signature: hashedSignature }));
+  }, [formData.amount]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate a form submission
     setTimeout(() => {
       setIsLoading(false);
-      setShowPaymentModal(true);
-
-      // Display success toast
-      toast.success("Form submitted successfully! Proceed to payment.", {
+      toast.success("Redirecting to eSewa payment...", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
       });
 
-      // Reset form fields
-      setName("");
-      setAmount("");
-      setEmail("");
-      setPhone("");
-      setMessage("");
-    }, 2000);
-  };
+      // Create and submit the eSewa payment form dynamically
+      const esewaForm = document.createElement("form");
+      esewaForm.action = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
+      esewaForm.method = "POST";
+      esewaForm.style.display = "none";
 
-  const closeModal = () => {
-    setShowPaymentModal(false);
-    toast.info("You closed the payment modal.", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: true,
-    });
+      Object.entries(formData).forEach(([key, value]) => {
+        if (key !== "secret") { // Exclude secret from being sent to the frontend
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = value;
+          esewaForm.appendChild(input);
+        }
+      });
+
+      document.body.appendChild(esewaForm);
+      esewaForm.submit();
+    }, 2000);
   };
 
   return (
     <>
       <ToastContainer />
-
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5 my-10">
-        {/* Description Section */}
         <div className="container w-1/2 mx-auto px-6 py-10">
           <h1 className="text-4xl font-bold text-[#b17457] mb-6 text-center">
             Fund Donations
@@ -62,17 +90,8 @@ const Fund = () => {
             Your financial support empowers us to assist those in need during
             challenging times. Together, we can rebuild lives and communities.
           </p>
-          <div className="flex justify-between px-20">
-            <div>
-              <img src="" alt="img1" />
-            </div>
-            <div>
-              <img src="" alt="img2" />
-            </div>
-          </div>
         </div>
 
-        {/* Form Section */}
         <div className="lg:w-1/2 bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
             Fund Collection
@@ -84,15 +103,6 @@ const Fund = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
-              required
-            />
-            <input
-              type="number"
-              placeholder="Donation Amount (NPR)"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
-              min="1"
               required
             />
             <input
@@ -119,6 +129,21 @@ const Fund = () => {
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
               rows="4"
             ></textarea>
+            <input
+              type="number"
+              placeholder="Donation Amount (NPR)"
+              value={formData.amount}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  amount: e.target.value,
+                  total_amount: e.target.value,
+                })
+              }
+              className="w-full p-3 mb-4 border border-gray-300 rounded-lg"
+              min="1"
+              required
+            />
             <button
               type="submit"
               className="w-full py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300"
@@ -129,50 +154,6 @@ const Fund = () => {
           </form>
         </div>
       </div>
-
-      {/* Modal for Payment Options */}
-      {showPaymentModal && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-            <h3 className="text-xl font-bold text-[#b17457] mb-4">
-              Choose Your Payment Method
-            </h3>
-            <div className="flex gap-4 justify-center">
-              {/* eSewa Button */}
-              <button
-                className="p-2"
-                onClick={() => toast.success("Redirecting to eSewa...")}
-              >
-                <img
-                  src={assets.esewalogo}
-                  alt="eSewa Logo"
-                  className="w-16 h-auto rounded-full"
-                />
-              </button>
-
-              {/* Khalti Button */}
-              <button
-                className="p-2"
-                onClick={() => toast.success("Redirecting to Khalti...")}
-              >
-                <img
-                  src={assets.khaltilogo}
-                  alt="Khalti Logo"
-                  className="w-28 h-auto"
-                />
-              </button>
-            </div>
-            <div className="mt-4 text-center">
-              <button
-                className="text-gray-500 hover:text-gray-700"
-                onClick={closeModal}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };
