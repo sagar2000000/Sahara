@@ -13,10 +13,12 @@ const BloodDonation = () => {
         const response = await axios.get(url);
 
         // Initialize data with a default status
-        const donationsWithDefaultStatus = response.data.data.map((donation) => ({
-          ...donation,
-          status: "Pending", // Default status
-        }));
+        const donationsWithDefaultStatus = response.data.data.map(
+          (donation) => ({
+            ...donation,
+            status: "Pending", // Default status
+          })
+        );
 
         setDonations(donationsWithDefaultStatus);
       } catch (err) {
@@ -44,15 +46,15 @@ const BloodDonation = () => {
   return (
     <div className="max-w-screen-xl mx-auto p-6">
       <header className="mb-6">
-        <h1 className="text-3xl font-semibold text-[#b17457]">
+        <h1 className="text-4xl font-bold text-[#000080] mb-6 text-center">
           Blood Donation Management
         </h1>
       </header>
 
       {/* Donation Table */}
       <div className="overflow-x-auto bg-white shadow-md rounded-lg">
-        <table className="min-w-full table-auto">
-          <thead className="bg-[#b17457] text-white">
+        <table className="min-w-full table-auto text-lg">
+          <thead className="bg-[#007BFF] text-white">
             <tr>
               <th className="px-6 py-3 text-left">Donor Name</th>
               <th className="px-6 py-3 text-left">Blood Group</th>
@@ -60,7 +62,6 @@ const BloodDonation = () => {
               <th className="px-6 py-3 text-left">Age</th>
               <th className="px-6 py-3 text-left">Email</th>
               <th className="px-6 py-3 text-left">Phone</th>
-              
             </tr>
           </thead>
           <tbody>
@@ -73,16 +74,11 @@ const BloodDonation = () => {
                   <td className="px-6 py-3">{donation.age}</td>
                   <td className="px-6 py-3">{donation.email}</td>
                   <td className="px-6 py-3">{donation.phonenumber}</td>
-                  
-                 
                 </tr>
               ))
             ) : (
               <tr>
-                <td
-                  colSpan="8"
-                  className="px-6 py-3 text-center text-gray-500"
-                >
+                <td colSpan="8" className="px-6 py-3 text-center text-gray-500">
                   No donations available.
                 </td>
               </tr>

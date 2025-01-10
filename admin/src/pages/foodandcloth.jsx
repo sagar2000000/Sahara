@@ -27,14 +27,14 @@ const FoodAndCloth = () => {
 
   return (
     <div className="container mx-auto px-5 py-10">
-      <h1 className="text-4xl font-bold text-[#b17457] mb-6 text-center">
+      <h1 className="text-4xl font-bold text-[#000080] mb-6 text-center">
         Admin Panel - Food and Cloth Donations
       </h1>
 
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg p-6">
-        <table className="min-w-full table-auto">
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+        <table className="min-w-full table-auto text-lg">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-[#007BFF] text-white">
               <th className="px-4 py-2 text-left">Name</th>
               <th className="px-4 py-2 text-left">Email</th>
               <th className="px-4 py-2 text-left">Phone</th>

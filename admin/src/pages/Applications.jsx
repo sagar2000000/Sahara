@@ -53,13 +53,13 @@ const Applications = () => {
   return (
     <section className="bg-gray-50 py-10 px-6">
       <div className="container mx-auto">
-        <h1 className="text-3xl font-bold text-[#b17457] mb-6 text-center">
+        <h1 className="text-3xl font-bold text-[#000080] mb-6 text-center">
           Admin Panel - Applications
         </h1>
 
         <div className="overflow-x-auto shadow-lg rounded-lg bg-white">
-          <table className="min-w-full text-sm text-left text-gray-700">
-            <thead className="bg-[#b17457] text-white">
+          <table className="min-w-full text-base text-left text-gray-700">
+            <thead className="bg-[#007BFF] text-white">
               <tr>
                 <th className="py-4 px-6">#</th>
                 <th className="py-4 px-6">Full Name</th>
