@@ -9,11 +9,11 @@ const Help = () => {
   const chatContainerRef = useRef(null);
 
   const recommendedMessages = [
-    "What are the website features?",
-    "How to use the website?",
-    "Can I change my password?",
-    "Where can I find the support team?",
-    "Tell me about the latest updates.",
+    "What can I do on Sahara?",
+    "How do I donate blood, food, or clothes?",
+    "How can I apply for financial assistance?",
+    "How do I track my donations?",
+    "Tell me about Sahara's mission and impact.",
   ];
 
   useEffect(() => {

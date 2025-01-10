@@ -17,7 +17,7 @@ const HeroPage = () => {
 
         <div className="container mx-auto px-6 lg:px-12 py-16 relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold text-[#b17457] leading-tight">
-            Welcome to Our Fundraising Platform
+            Welcome to Sahara, Fundraising Platform
           </h1>
 
           <blockquote className="mt-8 italic text-lg md:text-2xl text-[#b17457]">
@@ -42,6 +42,7 @@ const HeroPage = () => {
 
       <section className="bg-gray-50 py-16 px-4">
         <div className="container mx-auto text-center">
+          <div className="text-[#ca8666] text-4xl font-bold">By The People, For The People</div>
           <div className="mt-8 flex flex-col sm:flex-row sm:space-x-8 space-y-8 sm:space-y-0">
             {/* Donation Image 1 */}
             <div className="flex-1">
