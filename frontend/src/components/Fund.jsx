@@ -62,6 +62,14 @@ const Fund = () => {
             Your financial support empowers us to assist those in need during
             challenging times. Together, we can rebuild lives and communities.
           </p>
+          <div className="flex justify-between px-20">
+            <div>
+              <img src="" alt="img1" />
+            </div>
+            <div>
+              <img src="" alt="img2" />
+            </div>
+          </div>
         </div>
 
         {/* Form Section */}

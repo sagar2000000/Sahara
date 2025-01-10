@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { assets } from "../assets/assets";
 
 const Blood = () => {
   const [bloodCollectionData, setBloodCollectionData] = useState({
@@ -73,26 +74,25 @@ const Blood = () => {
     <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5 my-10">
       <ToastContainer />
       {/* Description Section */}
-      <div className="container w-1/2 mx-auto px-6 py-10">
-        <h1 className="text-4xl font-bold text-red-600 mb-6 text-center">
+      <div className="container w-[90%] mx-auto px-6 py-10">
+        <h1 className="text-5xl font-bold text-red-600 mb-6 text-center">
           Blood Donation Campaigns
         </h1>
-        <p className="text-gray-700 text-lg text-center mb-8">
+        <p className="text-gray-700 text-2xl text-center mb-8">
           Your blood donation can save lives. Join our efforts to help those in
           need of blood transfusions.
         </p>
 
         <div className="bg-white shadow-md rounded-lg p-6 mb-8 hover:shadow-lg transition-shadow duration-300">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Why Donate Blood?
-          </h2>
-          <p className="text-gray-600 mb-4">
-            Blood is essential for illnesses, and traumatic injuries. Every
-            donation can save up to three lives.
-          </p>
-          <button className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700">
-            Learn More
-          </button>
+          
+          <div className="flex justify-between py-10">
+            <div>
+              <img src={assets.blood_img1} alt="img1" className="w-[370px]"/>
+            </div>
+            <div>
+              <img src={assets.blood_img2} alt="img2" className="w-[400px]"/>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -180,7 +180,7 @@ const Blood = () => {
           />
           <button
             type="submit"
-            className="w-full py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300"
+            className="w-full py-3 bg-[#007BFF] text-white rounded-lg hover:bg-[#0056b3] transition duration-300"
             disabled={isLoading}
           >
             {isLoading ? "Submitting..." : "Submit"}

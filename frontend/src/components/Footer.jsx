@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <Link to={"/"}>
-              <h3 className="text-2xl font-bold mb-4 text-[#b17457]">Sahara</h3>
+              <h3 className="text-3xl font-bold mb-4 text-[#000080]">Sahara</h3>
             </Link>
-            <p className="text-gray-500 mb-4">
+            <p className="text-gray-500 mb-4 text-xl">
               We are committed to providing assistance to those in need. Our
               platform connects donors and recipients to create a better future
               for everyone in our community.
@@ -22,7 +22,7 @@ const Footer = () => {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#b17457] hover:text-[#b17457]transition-colors duration-300"
+                className="text-[#007BFF] hover:text-[#007BFF] transition-colors duration-300"
               >
                 <svg
                   className="w-6 h-6"
@@ -43,7 +43,7 @@ const Footer = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#b17457] hover:text-[#b17457]transition-colors duration-300"
+                className="text-[#007BFF] hover:text-[#007BFF] transition-colors duration-300"
               >
                 <svg
                   className="w-6 h-6"
@@ -65,14 +65,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-[#b17457]">
+            <h3 className="text-3xl font-bold mb-4 text-[#007BFF]">
               Quick Links
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   to="/donation"
-                  className="hover:text-gray-700 transition-colors duration-300"
+                  className="hover:text-gray-700 transition-colors duration-300 text-xl"
                 >
                   Donation
                 </Link>
@@ -80,7 +80,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/application"
-                  className="hover:text-gray-700 transition-colors duration-300"
+                  className="hover:text-gray-700 transition-colors duration-300 text-xl"
                 >
                   Application
                 </Link>
@@ -88,7 +88,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/help"
-                  className="hover:text-gray-700 transition-colors duration-300"
+                  className="hover:text-gray-700 transition-colors duration-300 text-xl"
                 >
                   Help
                 </Link>
@@ -98,13 +98,13 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-[#b17457]">
+            <h3 className="text-3xl font-bold mb-4 text-[#007BFF]">
               Contact Us
             </h3>
-            <p className="text-gray-500 mb-4">
+            <p className="text-gray-500 mb-4 text-xl">
               Feel free to reach out to us for any assistance or questions.
             </p>
-            <p className="mb-2">
+            <p className="mb-2 text-xl">
               Email:{" "}
               <a
                 href="mailto:info@sahara.com"
@@ -113,10 +113,10 @@ const Footer = () => {
                 info@sahara.com
               </a>
             </p>
-            <p className="mb-2">
+            <p className="mb-2 text-xl">
               Phone: <span className="text-gray-500">+977 9810121270</span>
             </p>
-            <p className="mb-2">
+            <p className="mb-2 text-xl">
               Address: <span className="text-gray-500">Kathmandu, Nepal</span>
             </p>
           </div>
@@ -124,7 +124,7 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="mt-12 border-t border-gray-700 pt-4 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-lg text-gray-500">
             © 2025 Sahara, All rights reserved.
           </p>
         </div>

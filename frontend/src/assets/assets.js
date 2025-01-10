@@ -8,6 +8,14 @@ import blood from './blood.png'
 import foodandcloth from './foodandcloth.png'
 import eva_logo from './eva_logo.jpg'
 import hero_img from './hero_img.jpg'
+import fund_img1 from './fund_img1.jpg'
+import fund_img2 from './fund_img2.jpeg'
+import blood_img1 from './blood_img1.jpg'
+import blood_img2 from './blood_img2.jpg'
+import food_img1 from './food_img1.jpg'
+import food_img2 from './food_img2.jpg'
+import form from './form.png'
+import money_bag from './money-bag.png'
 
 
 export const assets = {
@@ -19,7 +27,15 @@ export const assets = {
     blood,
     foodandcloth,
     eva_logo,
-    hero_img
+    hero_img,
+    fund_img1,
+    fund_img2,
+    blood_img1,
+    blood_img2,
+    food_img1,
+    food_img2,
+    form,
+    money_bag
 }
 
 //hello//

@@ -6,10 +6,10 @@ const OurGoals = () => {
       <div className="container mx-auto">
         {/* Heading Section */}
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-[#b17457]">
+          <h2 className="text-5xl font-extrabold text-[#000080]">
             Our Mission & Goals
           </h2>
-          <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-3xl md:text-xl text-gray-600 max-w-2xl mx-auto">
             Our mission is to empower communities by providing resources and support for critical needs. Together, we can bring hope and lasting change to those in need.
           </p>
         </div>
@@ -18,7 +18,7 @@ const OurGoals = () => {
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Goal 1 */}
           <div className="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center bg-[#b17457] text-white rounded-full w-16 h-16 mb-6 mx-auto">
+            <div className="flex items-center justify-center bg-[#007BFF] text-white rounded-full w-16 h-16 mb-6 mx-auto">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -34,17 +34,17 @@ const OurGoals = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+            <h3 className="text-3xl font-semibold text-gray-800 text-center">
               Rebuilding Lives
             </h3>
-            <p className="mt-4 text-gray-600 text-center">
+            <p className="mt-4 text-gray-600 text-center text-xl">
               Providing long-term support to rebuild homes and rehabilitate families affected by disasters.
             </p>
           </div>
 
           {/* Goal 2 */}
           <div className="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center bg-[#b17457] text-white rounded-full w-16 h-16 mb-6 mx-auto">
+            <div className="flex items-center justify-center bg-[#007BFF] text-white rounded-full w-16 h-16 mb-6 mx-auto">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -60,17 +60,17 @@ const OurGoals = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+            <h3 className="text-3xl font-semibold text-gray-800 text-center">
               Sustainable Food & Water Access
             </h3>
-            <p className="mt-4 text-gray-600 text-center">
+            <p className="mt-4 text-gray-600 text-center text-xl">
               Ensuring consistent food supplies and clean drinking water for vulnerable communities.
             </p>
           </div>
 
           {/* Goal 3 */}
           <div className="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center bg-[#b17457] text-white rounded-full w-16 h-16 mb-6 mx-auto">
+            <div className="flex items-center justify-center bg-[#007BFF] text-white rounded-full w-16 h-16 mb-6 mx-auto">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -86,17 +86,17 @@ const OurGoals = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+            <h3 className="text-3xl font-semibold text-gray-800 text-center">
               Access to Medical Care
             </h3>
-            <p className="mt-4 text-gray-600 text-center">
+            <p className="mt-4 text-gray-600 text-center text-xl">
               Providing emergency healthcare, medical supplies, and vaccination programs for at-risk populations.
             </p>
           </div>
 
           {/* Goal 4 */}
           <div className="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center bg-[#b17457] text-white rounded-full w-16 h-16 mb-6 mx-auto">
+            <div className="flex items-center justify-center bg-[#007BFF] text-white rounded-full w-16 h-16 mb-6 mx-auto">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -112,17 +112,17 @@ const OurGoals = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+            <h3 className="text-3xl font-semibold text-gray-800 text-center">
               Education & Awareness
             </h3>
-            <p className="mt-4 text-gray-600 text-center">
+            <p className="mt-4 text-gray-600 text-center text-xl">
               Empowering communities through education initiatives and disaster preparedness training.
             </p>
           </div>
 
           {/* Goal 5 */}
           <div className="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center bg-[#b17457] text-white rounded-full w-16 h-16 mb-6 mx-auto">
+            <div className="flex items-center justify-center bg-[#007BFF] text-white rounded-full w-16 h-16 mb-6 mx-auto">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -138,17 +138,17 @@ const OurGoals = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+            <h3 className="text-3xl font-semibold text-gray-800 text-center">
               Disaster Relief Funds
             </h3>
-            <p className="mt-4 text-gray-600 text-center">
+            <p className="mt-4 text-gray-600 text-center text-xl">
               Establishing rapid-response funds to tackle unforeseen emergencies and natural disasters.
             </p>
           </div>
 
           {/* Goal 6 */}
           <div className="bg-white shadow-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-            <div className="flex items-center justify-center bg-[#b17457] text-white rounded-full w-16 h-16 mb-6 mx-auto">
+            <div className="flex items-center justify-center bg-[#007BFF] text-white rounded-full w-16 h-16 mb-6 mx-auto">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -164,10 +164,10 @@ const OurGoals = () => {
                 ></path>
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 text-center">
+            <h3 className="text-3xl font-semibold text-gray-800 text-center">
               Empowering Local Communities
             </h3>
-            <p className="mt-4 text-gray-600 text-center">
+            <p className="mt-4 text-gray-600 text-center text-xl">
               Supporting local initiatives and entrepreneurs to create sustainable, community-driven development.
             </p>
           </div>

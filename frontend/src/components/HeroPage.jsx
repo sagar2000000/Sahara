@@ -7,42 +7,43 @@ const HeroPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className=" h-screen flex items-center justify-center text-center relative">
+      <section className="flex items-center justify-center text-center relative">
         {/* Transparent Image */}
-        <img
-          src={assets.hero_img} // Replace with your image path
-          alt="Hero Background"
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-60 pointer-events-none"
-        />
-
-        <div className="container mx-auto px-6 lg:px-12 py-16 relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#b17457] leading-tight">
+        <div className="container w-1/2 mx-auto px-6 lg:px-12 py-16 relative z-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#000080] leading-tight">
             Welcome to Sahara, Fundraising Platform
           </h1>
 
-          <blockquote className="mt-8 italic text-lg md:text-2xl text-[#b17457]">
+          <blockquote className="mt-8 italic text-lg md:text-2xl text-[#000080]">
             "The smallest act of kindness is worth more than the grandest
             intention." – Oscar Wilde
           </blockquote>
 
           <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center">
             <Link to={"/donation"}>
-              <button className="px-6 py-3 bg-[#b17457] text-white rounded-lg text-lg font-semibold hover:bg-[#8a533a] transition">
+              <button className="px-6 py-3 bg-[#007BFF] text-white rounded-lg text-lg font-semibold hover:bg-[#0056b3] transition">
                 Start Your Contribution
               </button>
             </Link>
             <Link to={"/help"}>
-              <button className="px-6 py-3 bg-white text-[#b17457] border border-[#b17457] rounded-lg text-lg font-semibold hover:bg-[#f5ebe1] transition">
+              <button className="px-6 py-3 bg-[#003366] text-white border border-[#003366] rounded-lg text-lg font-semibold hover:bg-[#001f33] transition">
                 Learn More
               </button>
             </Link>
           </div>
         </div>
+        <img
+          src={assets.hero_img} // Replace with your image path
+          alt="Hero Background"
+          className="w-auto h-[60%] object-cover opacity-100 pointer-events-none overflow-hidden rounded-xl m-20"
+        />
       </section>
 
       <section className="bg-gray-50 py-16 px-4">
         <div className="container mx-auto text-center">
-          <div className="text-[#ca8666] text-4xl font-bold">By The People, For The People</div>
+          <div className="text-[#000080] text-5xl font-bold">
+            By The People, For The People
+          </div>
           <div className="mt-8 flex flex-col sm:flex-row sm:space-x-8 space-y-8 sm:space-y-0">
             {/* Donation Image 1 */}
             <div className="flex-1">
@@ -52,15 +53,15 @@ const HeroPage = () => {
                 className="w-full h-auto rounded-lg pt-5 pl-20 pr-20 pb-5"
               />
               <div className="flex flex-col justify-start items-start px-20">
-                <h3 className="text-xl font-semibold text-gray-800 text-start">
+                <h3 className="text-3xl font-semibold text-[#000080] text-start">
                   Empowering Lives Through Generosity
                 </h3>
-                <p className="mt-2 text-gray-600 text-start">
+                <p className="mt-2 text-gray-600 text-start text-xl">
                   Your donation provides vital support for education,
                   healthcare, disaster relief, and community development.
                 </p>
                 <Link to={"/donation"} className="items-start">
-                  <button className="mt-4 px-6 py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300 shadow-md hover:shadow-lg items-start">
+                  <button className="mt-4 px-6 py-3 bg-[#007BFF] text-white rounded-lg hover:bg-[#0056b3] transition duration-300 shadow-md hover:shadow-lg items-start">
                     Donate Now
                   </button>
                 </Link>
@@ -75,21 +76,80 @@ const HeroPage = () => {
                 className="w-full h-auto rounded-lg p-20 pb-5"
               />
               <div className="flex flex-col justify-start items-start px-20">
-                <h3 className="text-xl font-semibold text-gray-800 text-start">
+                <h3 className="text-3xl font-semibold text-[#000080] text-start">
                   In Times of Crisis, We Stand Together
                 </h3>
-                <p className="mt-2 text-gray-600 text-start">
+                <p className="mt-2 text-gray-600 text-start text-xl">
                   Our relief fund is here to help you access critical aid during
                   times of hardship, ensuring that no one faces recovery alone.
                 </p>
                 <Link to={"/application"} className="items-start">
-                  <button className="mt-4 px-6 py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300 shadow-md hover:shadow-lg items-start">
+                  <button className="mt-4 px-6 py-3 bg-[#007BFF] text-white rounded-lg hover:bg-[#0056b3] transition duration-300 shadow-md hover:shadow-lg items-start">
                     Apply Now
                   </button>
                 </Link>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="bg-gray-50">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 px-32">
+          <div className="flex flex-col justify-center items-center border bg-white p-4 py-10">
+            <img
+              src={assets.form}
+              alt="Image 1"
+              className="w-20 h-auto rounded-lg p-2"
+            />
+            <p className="text-5xl p-2 text-[#007BFF]">1000+</p>
+            <p className="text-2xl p-2">Beneficiaries Impacted</p>
+          </div>
+          <div className="flex flex-col justify-center items-center border bg-white p-4">
+            <img
+              src={assets.money_bag}
+              alt="Image 2"
+              className="w-20 h-auto rounded-lg p-2"
+            />
+            <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+            <p className="text-2xl p-2">Aid Distributed</p>
+          </div>
+          <div className="flex flex-col justify-center items-center border bg-white p-4">
+            <img
+              src={assets.money_bag}
+              alt="Image 3"
+              className="w-20 h-auto rounded-lg p-2"
+            />
+            <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+            <p className="text-2xl p-2">Aid Distributed</p>
+          </div>
+          <div className="flex flex-col justify-center items-center border bg-white p-4 py-10">
+            <img
+              src={assets.money_bag}
+              alt="Image 4"
+              className="w-20 h-auto rounded-lg p-2"
+            />
+            <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+            <p className="text-2xl p-2">Aid Distributed</p>
+          </div>
+          <div className="flex flex-col justify-center items-center border bg-white p-4">
+            <img
+              src={assets.money_bag}
+              alt="Image 5"
+              className="w-20 h-auto rounded-lg p-2"
+            />
+            <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+            <p className="text-2xl p-2">Aid Distributed</p>
+          </div>
+          <div className="flex flex-col justify-center items-center border bg-white p-4">
+            <img
+              src={assets.money_bag}
+              alt="Image 6"
+              className="w-20 h-auto rounded-lg p-2"
+            />
+            <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+            <p className="text-2xl p-2">Aid Distributed</p>
+          </div>
+          
         </div>
       </section>
     </div>

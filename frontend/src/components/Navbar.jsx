@@ -8,19 +8,19 @@ const Navbar = () => {
     <nav className="bg-[#faf7f7] shadow-md fixed w-full z-50">
       <div className="container mx-auto flex justify-between items-center py-6 px-28">
         {/* Logo */}
-        <div className="text-[#b17457] font-bold text-4xl">
+        <div className="text-[#000080] font-bold text-5xl">
           <Link to="/">Sahara</Link>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium items-center text-lg">
+        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium items-center text-xl">
           <li>
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Home
@@ -31,8 +31,8 @@ const Navbar = () => {
               to="/donation"
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Donation
@@ -43,8 +43,8 @@ const Navbar = () => {
                 to="/donation/fund"
                 className={({ isActive }) =>
                   isActive
-                    ? "block px-4 py-2 text-[#b17457] underline underline-offset-4 font-semibold"
-                    : "block px-4 py-2 hover:text-[#b17457] hover:underline hover:underline-offset-4 rounded"
+                    ? "block px-4 py-2 text-[#007BFF] underline underline-offset-4 font-semibold"
+                    : "block px-4 py-2 hover:text-[#007BFF] hover:underline hover:underline-offset-4 rounded"
                 }
               >
                 Fund
@@ -53,8 +53,8 @@ const Navbar = () => {
                 to="/donation/blood"
                 className={({ isActive }) =>
                   isActive
-                    ? "block px-4 py-2 text-[#b17457] underline underline-offset-4 font-semibold"
-                    : "block px-4 py-2 hover:text-[#b17457] hover:underline hover:underline-offset-4 rounded"
+                    ? "block px-4 py-2 text-[#007BFF] underline underline-offset-4 font-semibold"
+                    : "block px-4 py-2 hover:text-[#007BFF] hover:underline hover:underline-offset-4 rounded"
                 }
               >
                 Blood
@@ -63,8 +63,8 @@ const Navbar = () => {
                 to="/donation/foodandcloth"
                 className={({ isActive }) =>
                   isActive
-                    ? "block px-4 py-2 text-[#b17457] underline underline-offset-4 font-semibold"
-                    : "block px-4 py-2 hover:text-[#b17457] hover:underline hover:underline-offset-4 rounded"
+                    ? "block px-4 py-2 text-[#007BFF] underline underline-offset-4 font-semibold"
+                    : "block px-4 py-2 hover:text-[#007BFF] hover:underline hover:underline-offset-4 rounded"
                 }
               >
                 Food & Cloth
@@ -76,8 +76,8 @@ const Navbar = () => {
               to="/application"
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Application
@@ -88,11 +88,11 @@ const Navbar = () => {
               to="/help"
               className={({ isActive }) =>
                 isActive
-                  ? "text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
-              Help
+              AI Support ?
             </NavLink>
           </li>
         </ul>
@@ -127,8 +127,8 @@ const Navbar = () => {
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "block text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "block hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "block text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "block hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Home
@@ -139,8 +139,8 @@ const Navbar = () => {
               to="/donation"
               className={({ isActive }) =>
                 isActive
-                  ? "block text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "block hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "block text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "block hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Donation
@@ -151,8 +151,8 @@ const Navbar = () => {
               to="/application"
               className={({ isActive }) =>
                 isActive
-                  ? "block text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "block hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "block text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "block hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Application
@@ -163,8 +163,8 @@ const Navbar = () => {
               to="/help"
               className={({ isActive }) =>
                 isActive
-                  ? "block text-[#b17457] underline underline-offset-4 font-semibold"
-                  : "block hover:text-[#b17457] hover:underline hover:underline-offset-4"
+                  ? "block text-[#007BFF] underline underline-offset-4 font-semibold"
+                  : "block hover:text-[#007BFF] hover:underline hover:underline-offset-4"
               }
             >
               Help

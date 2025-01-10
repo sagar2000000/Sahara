@@ -7,10 +7,10 @@ const Donation = () => {
     <section className="bg-[#f9f9f9] py-16">
       <div className="container mx-auto px-4">
         {/* Header Section */}
-        <h1 className="text-4xl font-bold text-center text-[#b17457]">
+        <h1 className="text-5xl font-bold text-center text-[#000080]">
           Make a Donation
         </h1>
-        <p className="mt-4 text-lg text-center text-gray-700 max-w-2xl mx-auto">
+        <p className="mt-4 text-xl text-center text-gray-700 max-w-2xl mx-auto">
           Choose the type of donation you want to contribute to. Every act of kindness counts.
         </p>
 
@@ -52,14 +52,14 @@ const Donation = () => {
               />
               {/* Content */}
               <div className="p-6 flex flex-col items-center">
-                <h3 className="text-2xl font-semibold text-[#b17457] text-center">
+                <h3 className="text-3xl font-semibold text-[#007BFF] text-center">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-gray-700 text-center">
+                <p className="mt-2 text-gray-700 text-center text-xl">
                   {item.description}
                 </p>
                 <Link to={item.link}>
-                  <button className="mt-4 px-6 py-3 bg-[#b17457] text-white rounded-lg hover:shadow-lg transition duration-300">
+                  <button className="mt-4 px-6 py-3 bg-[#007BFF] hover:bg-[#0056b3] text-white rounded-lg hover:shadow-lg transition duration-300">
                     {item.buttonText}
                   </button>
                 </Link>

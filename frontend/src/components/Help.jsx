@@ -19,7 +19,7 @@ const Help = () => {
   useEffect(() => {
     // Add the bot's default initial message when the chat loads
     setChatHistory([
-      { sender: "bot", text: "Hello! How can I assist you today?" },
+      { sender: "bot", text: "Hi there! How can I assist you today?" },
     ]);
   }, []);
 
@@ -83,21 +83,20 @@ const Help = () => {
               alt="AI Bot Avatar"
               className="w-32 h-32 rounded-full mx-auto mb-6"
             />
-            <h3 className="text-xl text-center font-semibold text-gray-600">
-              Meet Your Assistant{" "}
-              <span className="ext-4xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 text-transparent bg-clip-text text-2xl">
+            <h3 className="text-4xl text-center font-semibold text-[#007BFF]">
+            I'm your AI assistant,{" "}
+              <span className="text-5xl font-bold bg-gradient-to-r from-[#007BFF] to-[#000080] text-transparent bg-clip-text">
                 Eva
               </span>
             </h3>
-            <p className="text-lg text-gray-600 mt-2">
-              I'm here to assist you! Ask me anything, and I'll do my best to
-              help.
+            <p className="text-2xl mt-2 text-center">
+             here to guide you! Ask me anything, and I'll provide the support you need.
             </p>
           </div>
 
           <div className="flex flex-col items-center justify-center min-h-screen w-[60%]">
             <div className="w-[80%] bg-white rounded-lg shadow-lg p-8">
-              <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-blue-700 text-transparent bg-clip-text mb-6">
+              <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-[#007BFF] to-[#000080] text-transparent bg-clip-text mb-6">
                 AI Assistance
               </h1>
 
@@ -111,7 +110,7 @@ const Help = () => {
                     key={index}
                     className={`mb-4 p-3 rounded-lg flex ${
                       chat.sender === "user"
-                        ? "bg-[#b17457] text-white self-end rounded-br-none justify-end"
+                        ? "bg-[#4490e1] text-white self-end rounded-br-none justify-end"
                         : "bg-gray-200 text-gray-800 self-start rounded-bl-none justify-start"
                     }`}
                   >
@@ -129,7 +128,7 @@ const Help = () => {
 
               {/* Recommended Messages */}
               <div className="mt-4">
-                <h2 className="text-xl font-semibold text-[#b17457]">
+                <h2 className="text-xl font-semibold text-red-600">
                   Suggested Questions:
                 </h2>
                 <div className="grid grid-cols-2 gap-2 mt-2">
@@ -137,7 +136,7 @@ const Help = () => {
                     <button
                       key={index}
                       onClick={() => handleRecommendedMessageClick(suggestion)}
-                      className="bg-[#f3e1d3] hover:bg-[#f1b599] text-[#b17457] px-4 py-2 rounded-md shadow-md transition duration-300"
+                      className="bg-[#4490e1] hover:bg-[#007BFF] text-white px-4 py-2 rounded-md shadow-md transition duration-300"
                     >
                       {suggestion}
                     </button>
@@ -152,11 +151,11 @@ const Help = () => {
                   placeholder="Type your message..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="flex-1 border-2 border-gray-300 rounded-lg px-4 py-2 mr-4 focus:outline-none focus:ring-2 focus:ring-[#b17457] transition duration-300"
+                  className="flex-1 border-2 border-gray-300 rounded-lg px-4 py-2 mr-4 focus:outline-none focus:ring-2 focus:ring-[#007BFF]transition duration-300"
                 />
                 <button
                   onClick={sendMessage}
-                  className="bg-[#b17457] text-white px-6 py-3 rounded-lg hover:bg-[#9c644a] transition duration-300 focus:outline-none"
+                  className="bg-[#007BFF] text-white px-6 py-3 rounded-lg hover:bg-[#0056b3] transition duration-300 focus:outline-none"
                 >
                   Send
                 </button>

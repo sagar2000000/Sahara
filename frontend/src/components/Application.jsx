@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { assets } from "../assets/assets";
 
 const Application = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,21 +58,43 @@ const Application = () => {
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-5 px-5">
         {/* Description Section */}
         <div className="lg:w-5/12 text-center lg:text-left">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
-            Read Me!
+          <h2 className="text-3xl md:text-5xl font-bold text-[#000080] mb-6">
+            About Application
           </h2>
-          <p className="text-lg text-gray-700 mb-8">
+          <p className="text-2xl text-gray-700 mb-8">
             If you or someone you know is in need of assistance, please fill out
             the application form below. Our team will review your request and
             get back to you as soon as possible. Your details will remain
             confidential and used solely for the purpose of providing
             assistance.
           </p>
+          <div className="flex justify-between items-center gap-8 py-10">
+            <div className="flex flex-col justify-center items-center w-full lg:w-5/12">
+              <img
+                src={assets.form}
+                alt="Image 1"
+                className="w-20 h-auto rounded-lg p-2"
+              />
+              <p className="text-5xl p-2 text-[#007BFF]">1000+</p>
+              <p className="text-2xl p-2">Beneficiaries Impacted</p>
+            </div>
+            <div className="flex flex-col justify-center items-center w-full lg:w-5/12">
+              <img
+                src={assets.money_bag}
+                alt="Image 2"
+                className="w-20 h-auto rounded-lg p-2"
+              />
+              <p className="text-5xl p-2 text-[#007BFF]">Rs 10000+</p>
+              <p className="text-2xl p-2">Aid Distributed</p>
+            </div>
+          </div>
         </div>
+
+        {/* Two Images Side by Side */}
 
         {/* Form Section */}
         <div className="lg:w-1/2 bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#b17457] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#000080] mb-6">
             Apply for Assistance
           </h2>
           <form onSubmit={handleSubmit}>
@@ -131,7 +154,7 @@ const Application = () => {
             />
             <button
               type="submit"
-              className="w-full py-3 bg-[#b17457] text-white rounded-lg hover:bg-[#9c644a] transition duration-300"
+              className="w-full py-3 bg-[#007BFF] text-white rounded-lg hover:bg-[#0056b3] transition duration-300"
               disabled={isLoading}
             >
               {isLoading ? "Submitting..." : "Submit Application"}
