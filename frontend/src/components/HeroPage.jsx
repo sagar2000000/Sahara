@@ -7,29 +7,35 @@ const HeroPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-[#d8d2c2] h-screen flex items-center justify-center text-center">
-        <div className="container mx-auto px-6 lg:px-12 py-16">
+      <section className="bg-[#d8d2c2] h-screen flex items-center justify-center text-center relative">
+        {/* Transparent Image */}
+        <img
+          src="/path-to-your-transparent-image.png" // Replace with your image path
+          alt="Hero Background"
+          className="absolute top-2 left-0 w-full h-full object-cover opacity-20 pointer-events-none"
+        />
+
+        <div className="container mx-auto px-6 lg:px-12 py-16 relative z-10">
           <h1 className="text-4xl md:text-6xl font-bold text-[#b17457] leading-tight">
             Welcome to Our Fundraising Platform
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-gray-700 leading-relaxed">
-            Empowering change through generosity. Whether it's for education,
-            healthcare, disaster relief, or community building, your
-            contributions pave the way for brighter futures and stronger
-            communities.
-          </p>
+
           <blockquote className="mt-8 italic text-lg md:text-2xl text-[#b17457]">
             "The smallest act of kindness is worth more than the grandest
             intention." – Oscar Wilde
           </blockquote>
 
           <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center">
-            <button className="px-6 py-3 bg-[#b17457] text-white rounded-lg text-lg font-semibold hover:bg-[#8a533a] transition">
-              Start Your Contribution
-            </button>
-            <button className="px-6 py-3 bg-white text-[#b17457] border border-[#b17457] rounded-lg text-lg font-semibold hover:bg-[#f5ebe1] transition">
-              Learn More
-            </button>
+            <Link to={"/donation"}>
+              <button className="px-6 py-3 bg-[#b17457] text-white rounded-lg text-lg font-semibold hover:bg-[#8a533a] transition">
+                Start Your Contribution
+              </button>
+            </Link>
+            <Link to={"/help"}>
+              <button className="px-6 py-3 bg-white text-[#b17457] border border-[#b17457] rounded-lg text-lg font-semibold hover:bg-[#f5ebe1] transition">
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </section>
