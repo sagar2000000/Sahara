@@ -3,8 +3,12 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { assets } from "../assets/assets";
+import emailjs from '@emailjs/browser';
 
 const Application = () => {
+  const form = useRef();
+  
+
   const [isLoading, setIsLoading] = useState(false);
   const url = "http://localhost:4000/app/application/submission";
   const [applicationData, setApplicationData] = useState({
@@ -72,6 +76,24 @@ const Application = () => {
   };
 
   const handleSubmit = async (e) => {
+
+    // const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs
+        .sendForm('service_jv7dcxo', 'template_8hu3x5e', form.current, {
+          publicKey: '07R2Ni316qFS5eUzQ',
+        })
+        .then(  
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
+    // };
+
     e.preventDefault();
     setIsLoading(true);
 
@@ -144,7 +166,9 @@ const Application = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-[#000080] mb-6">
             Apply for Assistance
           </h2>
-          <form onSubmit={handleSubmit}>
+
+          
+          <form ref={form} onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Full Name"
@@ -201,6 +225,7 @@ const Application = () => {
             />
             <button
               type="submit"
+              // onClick={sendEmail}
               className="w-full py-3 bg-[#007BFF] text-white rounded-lg hover:bg-[#0056b3] transition duration-300"
               disabled={isLoading}
             >
